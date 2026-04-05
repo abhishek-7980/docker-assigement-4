@@ -2,7 +2,7 @@ pipeline {
     agent {
         node {
             label 'QA'  
-            customWorkspace '/mnt/jenkins-slave'
+            
         }
     }
            stages{
