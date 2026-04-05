@@ -25,7 +25,7 @@ pipeline {
 		  steps {
 			sh 'git checkout 2026-Q1'
 			sh 'docker run -dp 80:80 -v container-Q1:/usr/local/apache2/htdocs --name c1 httpd'
-			sh 'docker cp index.html c1 /usr/local/apache2/htdocs/index.html'
+			sh 'docker cp index.html c1:/usr/local/apache2/htdocs/index.html'
 			sh 'docker exec c1 chmod 777 -R /usr/local/apache2/htdocs/index.html'
 		}
 	}
@@ -38,7 +38,7 @@ pipeline {
 		   steps {
 			 sh 'git checkout 2026-Q2'
 			 sh 'docker run -dp 90:80 -v container-Q2:/usr/local/apache2/htdocs --name c2 httpd'
-			 sh 'docker cp index.html c2 /usr/local/apache2/htdocs/index.html'
+			 sh 'docker cp index.html c2:/usr/local/apache2/htdocs/index.html'
 			 sh 'docker exec c2 chmod 777 -R /usr/local/apache2/htdocs/index.html '
 		}
 	}
@@ -50,10 +50,10 @@ pipeline {
 		stage ('Deploy Q3'){
 		  steps {
 			sh 'git checkout 2026-Q3'
-		        sh 'docker run -dp 90:80 -v container-Q3:/usr/local/apache2/htdocs --name c3 httpd'
-			sh 'docker cp index.html c3 /usr/local/apache2/htdocs/index.html'
+		    sh 'docker run -dp 9080:80 -v container-Q3:/usr/local/apache2/htdocs --name c3 httpd'
+			sh 'docker cp index.html c3:/usr/local/apache2/htdocs/index.html'
 			sh 'docker exec c3 chmod 777 -R /usr/local/apache2/htdocs/index.html'
 		}
 	}
 }
-
+}
